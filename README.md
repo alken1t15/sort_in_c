@@ -55,21 +55,27 @@
 
    ```sh
    mkdir build && cd build
+
+3. Сборка проекта:
+1) По умолчанию (чтение при помощи fopen)
+   ```sh
    cmake .. 
    make
-3. (Опционально) Сборка с mmap:
+   ```
+2) (Опционально) cборка с mmap:
    ```sh
    cmake -DUSE_MMAP=ON ..
    make 
    ```
+2.1)
 Для проверки можно использовать команды:
-1) ```sh 
+1) Для просмотра какие вызовы выполняются
+   ```sh 
    strace ./sort_strings 3 input.txt bubble asc 2>&1 | grep -E 'open|read|mmap'
-   
-Для просмотра какие вызовы выполняются
-2) ```sh
-   grep USE_MMAP CMakeCache.txt 
-Для проверки, что USE_MMAP не был включен при сборке
+
+2) Для проверки, что USE_MMAP не был включен при сборке
+   ```sh
+   grep USE_MMAP CMakeCache.txt
 
 ## Запуск
 После сборки утилита sort_strings будет находиться в build/. Запустите её с нужными параметрами:
