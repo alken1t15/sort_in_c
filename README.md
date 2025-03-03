@@ -1,4 +1,4 @@
-# sort_strings
+# Утилита для сортировки строк
 
 ## Описание
 
@@ -45,14 +45,6 @@
 
 ---
 
-## Требования
-
-- Компилятор **GCC** или **Clang** с поддержкой C11.
-- **CMake 3.10** или выше.
-- ОС: **Linux / macOS** (Windows не поддерживается из-за `mmap`).
-
----
-
 ## Инструкция по сборке
 
 1. Склонируйте репозиторий:
@@ -68,10 +60,23 @@
 3. (Опционально) Сборка с mmap:
    ```sh
    cmake -DUSE_MMAP=ON ..
-   make
+   make 
+   ```
+Для проверки можно использовать команды:
+1) ```sh 
+   strace ./sort_strings 3 input.txt bubble asc 2>&1 | grep -E 'open|read|mmap'
+   
+Для просмотра какие вызовы выполняются
+2) ```sh
+   grep USE_MMAP CMakeCache.txt 
+Для проверки, что USE_MMAP не был включен при сборке
 
 ## Запуск
 После сборки утилита sort_strings будет находиться в build/. Запустите её с нужными параметрами:
+
+```sh 
+Usage: ./sort_strings <num_lines> <file> <algorithm> <comparator>
+```
 
 Примеры использования:
 
@@ -81,17 +86,21 @@
 
 Вывод:
 
+``` 
 Hello
 Hello World!
 Hello!
+```
 
 2. Сортировка 3 строк из input.txt быстрой сортировкой по убыванию:
    ```sh
    ./sort_strings 3 input.txt quick des
-
+   
+```
 Hello!
 Hello World!
 Hello
+```
 
 ### Ошибки и обработка исключений
 Программа возвращает код ошибки -1 и выводит сообщение в stderr, если:
@@ -107,7 +116,3 @@ Hello
    ```sh
    ./sort_strings 100500 input.txt unknown_algo unknown_cmp
    ```
-   
-   
-Unknown sorting algorithm
-Unknown comparator
