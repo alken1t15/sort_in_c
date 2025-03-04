@@ -3,7 +3,7 @@
 #include <string.h>
 #include <utils.h>
 
-// Пузырьковая сортировка (Bubble Sort)
+// Пузырьковая сортировка (Bubble Sort) ❌
 void sort_bubble(char **arr, size_t size,
                  int (*comparator)(const char *, const char *)) {
   for (size_t i = 0; i < size - 1; i++) {
@@ -17,7 +17,7 @@ void sort_bubble(char **arr, size_t size,
   }
 }
 
-// Сортировка вставками (Insertion Sort)
+// Сортировка вставками (Insertion Sort) ❌
 void sort_insertion(char **arr, size_t size,
                     int (*comparator)(const char *, const char *)) {
   for (size_t i = 1; i < size; i++) {
@@ -82,7 +82,7 @@ void merge_sort(char **arr, size_t left, size_t right,
   }
 }
 
-// Обёртка для Merge Sort
+// Обёртка для Merge Sort ❌ or ✅
 void sort_merge(char **arr, size_t size,
                 int (*comparator)(const char *, const char *)) {
   if (size > 1) {
@@ -124,7 +124,7 @@ void quick_sort(char **arr, size_t low, size_t high,
   }
 }
 
-// Обёртка для Quick Sort
+// Обёртка для Quick Sort ✅
 void sort_quick(char **arr, size_t size,
                 int (*comparator)(const char *, const char *)) {
   if (size > 1) {
@@ -143,7 +143,7 @@ size_t get_max_length(char **arr, size_t size) {
   return max_len;
 }
 
-// Поразрядная сортировка (Radix Sort) для строк
+// Поразрядная сортировка (Radix Sort) для строк ✅
 void sort_radix(char **arr, size_t size,
                 int (*comparator)(const char *, const char *)) {
   size_t max_len =

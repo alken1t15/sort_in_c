@@ -20,7 +20,7 @@ void test_bubble_sort() {
     assert(strcmp(arr[i], expected_des[i]) == 0);
   }
 
-  printf("test_bubble_sort passed!\n");
+  printf("✅ test_bubble_sort passed!\n");
 }
 
 // Тестирование сортировки вставками
@@ -39,7 +39,7 @@ void test_insertion_sort() {
     assert(strcmp(arr[i], expected_des[i]) == 0);
   }
 
-  printf("test_insertion_sort passed!\n");
+  printf("✅ test_insertion_sort passed!\n");
 }
 
 // Тестирование сортировки слиянием
@@ -58,7 +58,7 @@ void test_merge_sort() {
     assert(strcmp(arr[i], expected_des[i]) == 0);
   }
 
-  printf("test_merge_sort passed!\n");
+  printf("✅ test_merge_sort passed!\n");
 }
 
 // Тестирование быстрой сортировки
@@ -77,7 +77,7 @@ void test_quick_sort() {
     assert(strcmp(arr[i], expected_des[i]) == 0);
   }
 
-  printf("test_quick_sort passed!\n");
+  printf("✅ test_quick_sort passed!\n");
 }
 
 // Тестирование поразрядной сортировки
@@ -96,7 +96,7 @@ void test_radix_sort() {
     assert(strcmp(arr[i], expected_des[i]) == 0);
   }
 
-  printf("test_radix_sort passed!\n");
+  printf("✅ test_radix_sort passed!\n");
 }
 
 // Тестирование сортировки массива из одного элемента
@@ -107,7 +107,7 @@ void test_single_element() {
   for (int i = 0; i < 1; i++) {
     assert(strcmp(arr[i], expected[i]) == 0);
   }
-  printf("test_single_element passed!\n");
+  printf("✅ test_single_element passed!\n");
 }
 
 // Тестирование сортировки уже отсортированного массива
@@ -118,7 +118,7 @@ void test_sorted_array() {
   for (int i = 0; i < 3; i++) {
     assert(strcmp(arr[i], expected[i]) == 0);
   }
-  printf("test_sorted_array passed!\n");
+  printf("✅ test_sorted_array passed!\n");
 }
 
 // Тестирование сортировки массива с одинаковыми элементами
@@ -129,7 +129,7 @@ void test_identical_elements() {
   for (int i = 0; i < 3; i++) {
     assert(strcmp(arr[i], expected[i]) == 0);
   }
-  printf("test_identical_elements passed!\n");
+  printf("✅ test_identical_elements passed!\n");
 }
 
 // Тестирование сортировки массива с разным регистром букв
@@ -140,7 +140,7 @@ void test_case_sensitive() {
   for (int i = 0; i < 3; i++) {
     assert(strcmp(arr[i], expected_asc[i]) == 0);
   }
-  printf("test_case_sensitive passed!\n");
+  printf("✅ test_case_sensitive passed!\n");
 }
 
 // Тестирование сортировки строк, содержащих числа
@@ -151,7 +151,7 @@ void test_numeric_strings() {
   for (int i = 0; i < 3; i++) {
     assert(strcmp(arr[i], expected_asc[i]) == 0);
   }
-  printf("test_numeric_strings passed!\n");
+  printf("✅ test_numeric_strings passed!\n");
 }
 
 // Тестирование сортировки строк с символами и спецзнаками
@@ -162,7 +162,7 @@ void test_special_characters() {
   for (int i = 0; i < 3; i++) {
     assert(strcmp(arr[i], expected_asc[i]) == 0);
   }
-  printf("test_special_characters passed!\n");
+  printf("✅ test_special_characters passed!\n");
 }
 
 // Запуск всех тестов
@@ -179,6 +179,6 @@ int main() {
   test_numeric_strings();
   test_special_characters();
 
-  printf("All sorting tests passed!\n");
+  printf("✅ All sorting tests passed!\n");
   return 0;
 }
