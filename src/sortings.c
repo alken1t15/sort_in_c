@@ -37,14 +37,17 @@ void merge(char **arr, size_t left, size_t mid, size_t right,
   size_t left_size = mid - left + 1;
   size_t right_size = right - mid;
 
-  char **left_array = (char **)malloc(left_size * sizeof(char *));
-  char **right_array = (char **)malloc(right_size * sizeof(char *));
+  char **left_array =
+      (char **)malloc(left_size * sizeof(char *)); // Левый подмассив
+  char **right_array =
+      (char **)malloc(right_size * sizeof(char *)); // Правый подмассив
 
+  // Копируем данные в подмассивы
   for (size_t i = 0; i < left_size; i++)
     left_array[i] = arr[left + i];
   for (size_t j = 0; j < right_size; j++)
     right_array[j] = arr[mid + 1 + j];
-
+  // Объединение в массив
   size_t i = 0, j = 0, k = left;
   while (i < left_size && j < right_size) {
     if (comparator(left_array[i], right_array[j]) <= 0)
@@ -52,7 +55,7 @@ void merge(char **arr, size_t left, size_t mid, size_t right,
     else
       arr[k++] = right_array[j++];
   }
-
+  // Добавляем оставшиеся элементы, которые остались
   while (i < left_size)
     arr[k++] = left_array[i++];
   while (j < right_size)
@@ -62,12 +65,18 @@ void merge(char **arr, size_t left, size_t mid, size_t right,
   free(right_array);
 }
 
-// Рекурсивная сортировка слиянием (Merge Sort)
+/* Рекурсивная сортировка слиянием (Merge Sort)
+ * Нам нужно разделить массив, на отдельные части элементы
+ * После этого мы уже сможем занимать объединением их в массив
+ */
 void merge_sort(char **arr, size_t left, size_t right,
                 int (*comparator)(const char *, const char *)) {
   if (left < right) {
+    // Находим общую середину
     size_t mid = left + (right - left) / 2;
+    // Сортируем левую часть
     merge_sort(arr, left, mid, comparator);
+    // Сортируем правую часть
     merge_sort(arr, mid + 1, right, comparator);
     merge(arr, left, mid, right, comparator);
   }
@@ -85,9 +94,11 @@ void sort_merge(char **arr, size_t size,
 void quick_sort(char **arr, size_t low, size_t high,
                 int (*comparator)(const char *, const char *)) {
   if (low < high) {
-    char *pivot = arr[high];
+    char *pivot = arr[high]; // Выбираем опорный элемент
     size_t i = low - 1;
+    // Проходим по всем элементам массива
     for (size_t j = low; j < high; j++) {
+      // Меняем элементы местами
       if (comparator(arr[j], pivot) < 0) {
         i++;
         char *temp = arr[i];
@@ -95,11 +106,18 @@ void quick_sort(char **arr, size_t low, size_t high,
         arr[j] = temp;
       }
     }
+    /*  Меняем местами опорный элемент и первый элемент,
+     *  который будет больше чем опорный
+     *  Теперь все элементы левее опорного меньше,
+     *  а правее все больше
+     *  pivot_index - новая позиция опорного элемента
+     */
     char *temp = arr[i + 1];
     arr[i + 1] = arr[high];
     arr[high] = temp;
     size_t pivot_index = i + 1;
 
+    // Сортируем левую и правую часть
     if (pivot_index > 0)
       quick_sort(arr, low, pivot_index - 1, comparator);
     quick_sort(arr, pivot_index + 1, high, comparator);
@@ -128,10 +146,12 @@ size_t get_max_length(char **arr, size_t size) {
 // Поразрядная сортировка (Radix Sort) для строк
 void sort_radix(char **arr, size_t size,
                 int (*comparator)(const char *, const char *)) {
-  size_t max_len = get_max_length(arr, size);
-
+  size_t max_len =
+      get_max_length(arr, size); // Находим максимальную длину строки
+  // Проходим по всем позициям разрядам с конца
   for (int pos = max_len - 1; pos >= 0; pos--) {
     size_t count[256] = {0}; // Частотный массив (256 символов ASCII)
+    // Временный массив для отсортированных строк
     char **output = (char **)malloc(size * sizeof(char *));
 
     // Подсчёт количества символов в текущей позиции

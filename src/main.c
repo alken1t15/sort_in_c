@@ -5,20 +5,23 @@
 #include <string.h>
 
 int main(int argc, char *argv[]) {
+  // Проверка аргументов
   if (argc != 5) {
     fprintf(stderr, "Usage: %s <num_lines> <file> <algorithm> <comparator>\n",
             argv[0]);
     return -1;
   }
-
+  // Получение количество строк для сортировки
   size_t count = atoi(argv[1]);
   if (count == 0) {
     fprintf(stderr, "Invalid number of lines\n");
     return -1;
   }
-
+  // Получение название файла
   const char *filename = argv[2];
+  // Выбор сортировки
   const char *algorithm = argv[3];
+  // Выбор компоратора для сортировки
   const char *comparator = argv[4];
 
   // Выбор компаратора
