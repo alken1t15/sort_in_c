@@ -8,7 +8,7 @@ option(USE_MMAP "Use mmap for file reading" OFF)
 
 # Создаем исполняемый файл
 add_executable(sort_strings src/main.c src/sortings.c src/utils.c)
-include_directories(include)
+include_directories(${PROJECT_SOURCE_DIR}/include)
 
 # Выводим сообщение о выбранном методе чтения
 if(USE_MMAP)
